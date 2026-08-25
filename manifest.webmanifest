@@ -1,0 +1,13 @@
+{
+  "name": "People I Meet",
+  "short_name": "People I Meet",
+  "description": "A simple personal database for people you meet.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f7f8f7",
+  "theme_color": "#275c47",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

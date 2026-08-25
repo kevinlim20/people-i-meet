@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8f7" />
+    <title>People I Meet</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="site-header">
+        <a class="brand" href="#people" aria-label="People I Meet home">People I Meet</a>
+        <nav aria-label="Main navigation">
+          <a href="#people" data-route="people">People</a>
+          <a href="#add" data-route="add">Add person</a>
+        </nav>
+      </header>
+
+      <section id="people-page" class="page" aria-labelledby="people-heading">
+        <div class="page-intro">
+          <div>
+            <p class="eyebrow" id="people-count">0 people</p>
+            <h1 id="people-heading">People</h1>
+            <p class="muted">A simple record of the people you meet.</p>
+          </div>
+          <button class="button primary" type="button" id="add-person-button">Add person</button>
+        </div>
+        <div class="toolbar">
+          <label class="search-field" for="search-input">
+            <span class="visually-hidden">Search people</span>
+            <span aria-hidden="true">⌕</span>
+            <input id="search-input" type="search" placeholder="Search all details" autocomplete="off" />
+          </label>
+        </div>
+        <div id="people-list" class="people-list" aria-live="polite"></div>
+        <section class="backup-card" aria-labelledby="backup-heading">
+          <div>
+            <h2 id="backup-heading">Keep a backup</h2>
+            <p>Save a copy of your people list to your device. You can restore it here later.</p>
+          </div>
+          <div class="backup-actions">
+            <button class="button secondary" id="export-backup" type="button">Download backup</button>
+            <label class="button secondary import-button">Restore backup<input id="import-backup" type="file" accept="application/json" /></label>
+          </div>
+        </section>
+      </section>
+
+      <section id="add-page" class="page" aria-labelledby="form-heading" hidden>
+        <div class="page-intro compact">
+          <div>
+            <p class="eyebrow">Your personal people database</p>
+            <h1 id="form-heading">Add person</h1>
+            <p class="muted">Capture a few details while they are still fresh.</p>
+          </div>
+        </div>
+        <form id="person-form" class="person-form">
+          <input type="hidden" id="person-id" />
+          <div class="form-grid">
+            <label>Name <span class="required">*</span><input id="name" required maxlength="100" autocomplete="name" placeholder="e.g. Aisha Rahman" /></label>
+            <label>Phone number<input id="phone" type="tel" maxlength="50" autocomplete="tel" placeholder="e.g. +60 12 345 6789" /></label>
+            <label>Where we met<input id="where-met" maxlength="150" placeholder="e.g. Bangsar café" /></label>
+            <label>Date we met<input id="date-met" type="date" /></label>
+            <label>Where they stay<input id="where-stay" maxlength="150" placeholder="e.g. Mont Kiara" /></label>
+            <label>What they do<input id="what-do" maxlength="150" placeholder="e.g. Architect" /></label>
+            <label class="full-width">Interests<input id="interests" maxlength="250" placeholder="e.g. Running, books, coffee" /></label>
+            <label class="full-width">Notes<textarea id="notes" rows="5" maxlength="2000" placeholder="Anything else you want to remember"></textarea></label>
+          </div>
+          <div class="form-actions">
+            <button class="button secondary" type="button" id="cancel-edit" hidden>Cancel</button>
+            <button class="button primary save-button" type="submit">Save person</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <dialog id="person-dialog" aria-labelledby="dialog-name">
+      <div class="dialog-header">
+        <div>
+          <p class="eyebrow">Person details</p>
+          <h2 id="dialog-name"></h2>
+        </div>
+        <button class="icon-button" id="close-dialog" type="button" aria-label="Close">×</button>
+      </div>
+      <dl id="person-details" class="details-list"></dl>
+      <div class="dialog-actions">
+        <button class="button secondary" id="dialog-delete" type="button">Delete</button>
+        <button class="button primary" id="dialog-edit" type="button">Edit person</button>
+      </div>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
