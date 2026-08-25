@@ -10,6 +10,18 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <section id="auth-page" class="auth-page" aria-labelledby="auth-heading">
+      <div class="auth-card">
+        <p class="eyebrow">People I Meet</p>
+        <h1 id="auth-heading">Your private people list</h1>
+        <p>Enter your email and we will send a secure sign-in link. There is no password to remember.</p>
+        <form id="login-form" class="login-form">
+          <label>Email address<input id="email" type="email" required autocomplete="email" placeholder="you@example.com" /></label>
+          <button class="button primary" type="submit">Email me a sign-in link</button>
+          <p id="login-message" class="login-message" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
     <main class="app-shell">
       <header class="site-header">
         <a class="brand" href="#people" aria-label="People I Meet home">People I Meet</a>
@@ -17,6 +29,7 @@
           <a href="#people" data-route="people">People</a>
           <a href="#add" data-route="add">Add person</a>
         </nav>
+        <button class="text-button" id="sign-out" type="button">Sign out</button>
       </header>
 
       <section id="people-page" class="page" aria-labelledby="people-heading">
@@ -42,6 +55,7 @@
             <p>Save a copy of your people list to your device. You can restore it here later.</p>
           </div>
           <div class="backup-actions">
+            <button class="button secondary" id="export-spreadsheet" type="button">Download spreadsheet</button>
             <button class="button secondary" id="export-backup" type="button">Download backup</button>
             <label class="button secondary import-button">Restore backup<input id="import-backup" type="file" accept="application/json" /></label>
           </div>
@@ -90,6 +104,8 @@
         <button class="button primary" id="dialog-edit" type="button">Edit person</button>
       </div>
     </dialog>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
